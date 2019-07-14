@@ -28,11 +28,8 @@
                         
                            $me = User::findUserById(1);
 
-                           foreach ($me as $key => $value) {
-                               
-                               echo $value->name;
-                           }
-
+                           echo $me->name;
+                          
 
                         ?>
                         <ol class="breadcrumb">
