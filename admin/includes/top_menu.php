@@ -87,7 +87,7 @@
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i>
                            <?php     
 
-                                $user = User::findUserById($_SESSION['user_id']);
+                                $user = User::findById($_SESSION['user_id']);
                                 echo $user->name;
 
                             ?>
