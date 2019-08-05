@@ -57,14 +57,17 @@
                         <h3>Inserting</h3>
                         <?php
 
+                        echo INCLUDE_PATH;
 
-                        // $user = new User();
 
-                        // $user->name = "Cristiano Ronaldo 7";
-                        // $user->email = "cristiano@cr7.com";
-                        // $user->password = '1234';
+                        // $photo = new Photo();
 
-                        // $user->create();
+                        // $photo->title = "Cristiano Ronaldo 7";
+                        // $photo->description = "cristiano@cr7.com";
+                        // $photo->filename = 'Huf File';
+                        // $photo->type = 'png';
+
+                        // $photo->create();
 
                         // $user = $user->findUserById(11);
                         // $user->delete();
