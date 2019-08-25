@@ -57,7 +57,7 @@
                         <h3>Inserting</h3>
                         <?php
 
-                        echo INCLUDE_PATH;
+                        echo SITE_ROOT;
 
 
                         // $photo = new Photo();

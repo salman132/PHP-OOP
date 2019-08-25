@@ -1,5 +1,7 @@
 <?php
 
+require_once('init.php');
+
 	class Photo extends Db_object{
 		protected static $db_table = "photos";
 		protected static $db_table_fields = array('id','title','description','filename','type','size');
@@ -50,9 +52,45 @@
 
 		}
 
+	public function save(){
+		if($this->id){
+			$this->update();
+		}
+		else{
+			if(!empty($this->errors)){
+				return false;
+			}
+			if(empty($this->filename) || empty($this->temp_path)){
+				$this->errors[] = "The file is not Available";
+				return false;
+			}
+
+			$this->target_path = SITE_ROOT . DS . 'admin' . DS . $this->upload_directory . DS . $this->filename;
+
+			if(file_exists($this->target_path)){
+				$this->errors[]= "The file {$this->filename } already exist";
+				return false;
+			}
+
+			if(move_uploaded_file($this->filename, $this->target_path)){
+				if($this->create()){
+					unset($this->temp_path);
+					return true;
+				}
+			}
+			else{
+				$this->errors[] = "The file directory does not have the permission";
+			}
+			
+			
+	}
+
 
 	}
 
+	// ..... End Of a Class ....
+
+$photo = new Photo();
 
 
 ?>
