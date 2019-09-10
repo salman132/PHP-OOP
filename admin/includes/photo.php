@@ -43,7 +43,7 @@ require_once('init.php');
 			}
 			else{
 				$this->filename = basename($file['name']);
-				$this->temp_path = $file['temp_name'];
+				$this->temp_path = $file['tmp_name'];
 				$this->type = $file['type'];
 				$this->size = $file['size'];		
 			}
@@ -51,6 +51,10 @@ require_once('init.php');
 
 
 		}
+
+	public function picture_path(){
+		return $this->upload_directory.DS.$this->filename;
+	}	
 
 	public function save(){
 		if($this->id){
@@ -72,7 +76,7 @@ require_once('init.php');
 				return false;
 			}
 
-			if(move_uploaded_file($this->filename, $this->target_path)){
+			if(move_uploaded_file($this->temp_path, $this->target_path)){
 				if($this->create()){
 					unset($this->temp_path);
 					return true;
@@ -80,13 +84,16 @@ require_once('init.php');
 			}
 			else{
 				$this->errors[] = "The file directory does not have the permission";
+
+				return false;
 			}
 			
 			
-	}
+		}
 
 
 	}
+}
 
 	// ..... End Of a Class ....
 

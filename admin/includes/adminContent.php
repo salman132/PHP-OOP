@@ -17,47 +17,47 @@
                             //     echo $row['name'];
                             // }
 
-                        $users = User::find_all();
+                        // $users = User::find_all();
 
-                        foreach ($users as $user) {
-                            echo $user->name;
-                        }
-
-
-
-                        ?>
-                        <h3>Photo</h3>
-
-                        <?php
-                            $photos = Photo::find_all();
-
-                            foreach ($photos as $photo) {
-
-                                echo $photo->title;
-                            }
+                        // foreach ($users as $user) {
+                        //     echo $user->name;
+                        // }
 
 
-                        ?>
-                        <h3>By ID</h3>
-                        <?php
+
+                        // ?>
+                        // <h3>Photo</h3>
+
+                        // <?php
+                        //     $photos = Photo::find_all();
+
+                        //     foreach ($photos as $photo) {
+
+                        //         echo $photo->title;
+                        //     }
+
+
+                        // ?>
+                        // <h3>By ID</h3>
+                        // <?php
                         
-                           $me = User::findById(2);
+                        //    $me = User::findById(2);
 
                           
 
-                           if(empty($me)){
-                             echo "<h3>No record Found</h3>";
-                           }
-                           else{
-                            echo $me->name;
-                           }
+                        //    if(empty($me)){
+                        //      echo "<h3>No record Found</h3>";
+                        //    }
+                        //    else{
+                        //     echo $me->name;
+                        //    }
                           
 
-                        ?>
-                        <h3>Inserting</h3>
-                        <?php
+                        // ?>
+                        // <h3>Inserting</h3>
+                        // <?php
 
-                        echo SITE_ROOT;
+                        // echo SITE_ROOT;
 
 
                         // $photo = new Photo();
