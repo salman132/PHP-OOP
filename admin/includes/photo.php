@@ -14,6 +14,7 @@ require_once('init.php');
 
 
 		public $temp_path;
+		public $target_path;
 		public $upload_directory = "images";
 		public $errors = array();
 		
@@ -45,7 +46,12 @@ require_once('init.php');
 				$this->filename = basename($file['name']);
 				$this->temp_path = $file['tmp_name'];
 				$this->type = $file['type'];
-				$this->size = $file['size'];		
+				$this->size = $file['size'];
+				$this->target_path = SITE_ROOT . DS . 'admin' . DS . $this->upload_directory . DS . $this->filename;
+				move_uploaded_file($this->temp_path, $this->target_path);
+				unset($this->temp_path);
+					
+						
 			}
 
 
