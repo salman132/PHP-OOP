@@ -48,8 +48,8 @@ require_once('init.php');
 				$this->type = $file['type'];
 				$this->size = $file['size'];
 				$this->target_path = SITE_ROOT . DS . 'admin' . DS . $this->upload_directory . DS . $this->filename;
-				move_uploaded_file($this->temp_path, $this->target_path);
-				unset($this->temp_path);
+				
+				
 					
 						
 			}

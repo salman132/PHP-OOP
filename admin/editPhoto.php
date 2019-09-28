@@ -9,22 +9,7 @@
       $photo->id = $_POST['id'];
       $photo->title = $_POST['title'];
       $photo->description = $_POST['description'];
-      $file = $_FILES['image'];
-        if(!empty($file['name']) && $file['error']==0){
-            
-            
-               
-            unlink($photo->picture_path());
-            
-          
-            $photo->set_file($_FILES['image']);
-            
-        }
-        else{
-            $photo->filename = $_POST['old_filename'];
-            $photo->type = $_POST['old_type'];
-            $photo->size = $_POST['old_filesize'];
-        }
+
     
 
       if($photo->save()){
@@ -99,16 +84,11 @@
                                         <label>Description</label>
                                         <textarea name="description" id="summernote" cols="30" rows="10"><?php echo $photo->description; ?></textarea>
                                     </div>
-                                    <div class="form-group">
-                                        <label>Image: </label>
-                                        <input type="file" name="image" id="">
-                                    </div>
+                                 
                                     
                                         
                                 
-                                        <input type="hidden" name="old_filename" value="<?php  echo $photo->filename; ?>">
-                                        <input type="hidden" name="old_filesize" value="<?php  echo $photo->size; ?>">
-                                        <input type="hidden" name="old_filetype" value="<?php  echo $photo->type; ?>">
+                                   
 
                                    
 

@@ -8,6 +8,9 @@
                         <a href="users.php"><i class="fa fa-fw fa-bar-chart-o"></i> Users</a>
                     </li>
                     <li>
+                        <a href="add_user.php"><i class="fa fa-fw fa-bar-chart-o"></i>Add User</a>
+                    </li>
+                    <li>
                         <a href="upload.php"><i class="fa fa-fw fa-table"></i> Uploads</a>
                     </li>
                     <li>

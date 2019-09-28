@@ -56,7 +56,7 @@
                                 <tr>
                                   <td><img src="<?php echo $photo->picture_path();   ?>" alt="" height="110px" width="107px">
                                   <div class="extra-tool">
-                                    <a href="viewPhoto.php?id=<?php  echo $photo->id;  ?>">View</a>
+                                    <a href=" <?php  echo $photo->id;  ?>">View</a>
                                     <a href="editPhoto.php?id=<?php  echo $photo->id;  ?>">Edit</a>
                                     <a href="deletePhoto.php?id=<?php echo $photo->id    ?>" class="text-danger">Delete</a>
                                   </div>
@@ -75,6 +75,18 @@
             </div>
 
         </div>
-        <!-- /#page-wrapper -->
+   
 
   <?php include("includes/footer.php"); ?>
+  <script>
+      $('#exampleModal').on('show.bs.modal', function (event) {
+    var button = $(event.relatedTarget) // Button that triggered the modal
+    var recipient = button.data('whatever') // Extract info from data-* attributes
+    // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+    // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+    var modal = $(this)
+    modal.find('.modal-title').text('New message to ' + recipient)
+    modal.find('.modal-body input').val(recipient)
+    ?>
+  })
+  </script>

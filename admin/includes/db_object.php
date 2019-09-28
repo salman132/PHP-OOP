@@ -18,6 +18,22 @@ class Db_object{
 		return !empty($the_result_array) ? array_shift($the_result_array) : false;
 	}
 
+	public static function count_all(){
+
+		global $db;
+		$count;
+
+		$sql = "SELECT COUNT(*) AS num FROM ". static::$db_table ." ";
+		$result = $db->query($sql);
+
+		while($data = mysqli_fetch_array($result)){
+			$count = $data['num'];
+		}
+
+		return $count;
+
+	}
+
 
 
 

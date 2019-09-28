@@ -12,6 +12,21 @@ class User extends Db_object{
 
 
 
+	public static function user_exist($email){
+		global $db;
+	
+		$sql = "SELECT *FROM users WHERE email='$email'";
+		
+
+		$get= $db->query($sql);
+
+		if(mysqli_num_rows($get)>=1){
+			return true;
+		}
+	}
+
+
+
 	
 	
 

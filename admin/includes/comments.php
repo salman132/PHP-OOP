@@ -1,33 +1,73 @@
-<?php include("includes/header.php"); ?>
+<?php
 
-        <!-- Navigation -->
-        <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="index.html">SB Admin</a>
-            </div>
-           <?php 
 
-           include_once('includes/top_menu.php'); 
-           include_once('includes/sidebar.php');
+class Comments extends Db_object{
 
-           ?>
-           
-            <!-- /.navbar-collapse -->
-        </nav>
+	protected static $db_table = "comments";
+	protected static $db_table_fields = array('id','photo_id','author','comment');
 
-        <div id="page-wrapper">
+	public $id;
+	public $photo_id;
+	public $author;
+	public $comment;
 
-            <?php include_once('includes/adminContent.php');  ?>
-            <!-- /.container-fluid -->
 
-        </div>
-        <!-- /#page-wrapper -->
+	public static function create_comment($photo_id,$author,$body){
 
-  <?php include("includes/footer.php"); ?>
+		if(!empty($photo_id) && !empty($author) && !empty($body)){
+
+			$comment = new Comments();
+
+			$comment->photo_id = $photo_id;
+			$comment->author = $author;
+			$comment->comment = $body;
+
+			return $comment;
+		}
+		else{
+			echo $photo_id.$user_id.$body;
+			return false;
+		}
+	}
+
+	public static function find_comments($photo_id){
+
+		$sql = "SELECT *FROM ". self::$db_table ." WHERE photo_id='$photo_id' ORDER BY photo_id ASC";
+
+		return self::find_this_query($sql);
+
+	}
+
+	public static function find_all_for_comments($offset,$limit){
+		global $db;
+		
+		$sql = "SELECT  p.id as id,c.id as comment_id,p.filename as filename ,c.author as author,c.comment as comment FROM photos p,comments c WHERE p.id=c.photo_id LIMIT $limit OFFSET $offset";
+
+		
+
+		return $db->query($sql);
+	}
+
+
+
+
+
+}
+
+$comment = new Comments();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+?>
